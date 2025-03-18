@@ -1,6 +1,6 @@
 {
   "name": "react-native-apk-install",
-  "version": "0.1.0",
+  "version": "1.0.0-rc.1",
   "description": "APK-file package installer for React Native",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -21,7 +21,6 @@
     "src",
     "lib",
     "android",
-    "ios",
     "cpp",
     "*.podspec",
     "react-native.config.js",
