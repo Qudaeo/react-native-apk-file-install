@@ -10484,29 +10484,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-apk-install-example@workspace:example":
+"react-native-apk-file-install@workspace:.":
   version: 0.0.0-use.local
-  resolution: "react-native-apk-install-example@workspace:example"
-  dependencies:
-    "@babel/core": "npm:^7.25.2"
-    "@babel/preset-env": "npm:^7.25.3"
-    "@babel/runtime": "npm:^7.25.0"
-    "@react-native-community/cli": "npm:15.0.1"
-    "@react-native-community/cli-platform-android": "npm:15.0.1"
-    "@react-native-community/cli-platform-ios": "npm:15.0.1"
-    "@react-native/babel-preset": "npm:0.78.0"
-    "@react-native/metro-config": "npm:0.78.0"
-    "@react-native/typescript-config": "npm:0.78.0"
-    react: "npm:19.0.0"
-    react-native: "npm:0.78.0"
-    react-native-builder-bob: "npm:^0.37.0"
-    react-native-file-access: "npm:3.1.1"
-  languageName: unknown
-  linkType: soft
-
-"react-native-apk-install@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "react-native-apk-install@workspace:."
+  resolution: "react-native-apk-file-install@workspace:."
   dependencies:
     "@commitlint/config-conventional": "npm:^17.0.2"
     "@evilmartians/lefthook": "npm:^1.5.0"
@@ -10531,6 +10511,26 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
+  languageName: unknown
+  linkType: soft
+
+"react-native-apk-install-example@workspace:example":
+  version: 0.0.0-use.local
+  resolution: "react-native-apk-install-example@workspace:example"
+  dependencies:
+    "@babel/core": "npm:^7.25.2"
+    "@babel/preset-env": "npm:^7.25.3"
+    "@babel/runtime": "npm:^7.25.0"
+    "@react-native-community/cli": "npm:15.0.1"
+    "@react-native-community/cli-platform-android": "npm:15.0.1"
+    "@react-native-community/cli-platform-ios": "npm:15.0.1"
+    "@react-native/babel-preset": "npm:0.78.0"
+    "@react-native/metro-config": "npm:0.78.0"
+    "@react-native/typescript-config": "npm:0.78.0"
+    react: "npm:19.0.0"
+    react-native: "npm:0.78.0"
+    react-native-builder-bob: "npm:^0.37.0"
+    react-native-file-access: "npm:3.1.1"
   languageName: unknown
   linkType: soft
 
