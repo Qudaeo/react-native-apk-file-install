@@ -6,7 +6,7 @@ import {
   install,
 } from 'react-native-apk-install';
 import { Dirs, FileSystem } from 'react-native-file-access';
-import { apkUrl } from './config';
+import { apkUrl } from './config.example';
 
 type Result = boolean | 'in progress' | 'unknown' | 'exception';
 
