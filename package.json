@@ -51,14 +51,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Qudaeo/react-native-apk-install.git"
+    "url": "git+https://github.com/Qudaeo/react-native-apk-file-install.git"
   },
   "author": "Aleksey Pekhterev <qudaeo@yandex.ru> (https://github.com/Qudaeo)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Qudaeo/react-native-apk-install/issues"
+    "url": "https://github.com/Qudaeo/react-native-apk-file-install/issues"
   },
-  "homepage": "https://github.com/Qudaeo/react-native-apk-install#readme",
+  "homepage": "https://github.com/Qudaeo/react-native-apk-file-install#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
