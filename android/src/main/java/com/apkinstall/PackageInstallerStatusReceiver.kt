@@ -9,8 +9,7 @@ import android.os.Build
 class PackageInstallerStatusReceiver : BroadcastReceiver() {
 
   override fun onReceive(context: Context, intent: Intent) {
-    val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
-    when (status) {
+    when (val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)) {
       PackageInstaller.STATUS_PENDING_USER_ACTION -> {
         val confirmationIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
           intent.getParcelableExtra(Intent.EXTRA_INTENT, Intent::class.java)
@@ -18,7 +17,8 @@ class PackageInstallerStatusReceiver : BroadcastReceiver() {
           @Suppress("DEPRECATION") intent.getParcelableExtra(Intent.EXTRA_INTENT)
         }
         if (confirmationIntent != null) {
-          context.startActivity(confirmationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+          confirmationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+          context.startActivity(confirmationIntent)
         }
       }
 

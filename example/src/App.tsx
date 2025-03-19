@@ -13,6 +13,7 @@ type Result =
   | 'in progress'
   | 'unknown'
   | 'exception'
+  | `exception ${any}`
   | 'downloading'
   | 'installing'
   | `download error ${number} ${string}`;
@@ -77,7 +78,7 @@ export default function App() {
         );
       }
     } catch (e) {
-      setInstallResult('exception');
+      setInstallResult(`exception ${e?.message}` as const);
       console.error('install', e);
     }
   };
@@ -115,8 +116,5 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     gap: 16,
-  },
-  button: {
-    width: 1000,
   },
 });
