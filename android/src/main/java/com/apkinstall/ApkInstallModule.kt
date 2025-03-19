@@ -24,10 +24,10 @@ class ApkInstallModule(reactContext: ReactApplicationContext) :
   override fun install(
     path: String,
     silent: Boolean,
-    onStatusReceiveCallback: Callback,
+    listener: Callback,
     promise: Promise?
   ) {
-    onStatusReceive = onStatusReceiveCallback
+    onStatusReceive = listener
 
     val apkFile = File(path)
     if (!apkFile.exists()) {
