@@ -8,7 +8,14 @@ import {
 import { Dirs, FileSystem } from 'react-native-file-access';
 import { apkUrl } from './config.example';
 
-type Result = boolean | 'in progress' | 'unknown' | 'exception';
+type Result =
+  | boolean
+  | 'in progress'
+  | 'unknown'
+  | 'exception'
+  | 'downloading'
+  | 'installing'
+  | `download error ${number} ${string}`;
 
 const UPDATE_APK_FILE = `${Dirs.CacheDir}/update.apk`;
 
@@ -46,14 +53,16 @@ export default function App() {
   };
 
   const installApk = async () => {
+    setInstallStatus(null);
     try {
-      setInstallResult('in progress');
+      setInstallResult('downloading');
 
       const downloadResult = await FileSystem.fetch(apkUrl, {
         path: UPDATE_APK_FILE,
       });
 
       if (downloadResult.ok) {
+        setInstallResult('installing');
         const result = await install(
           UPDATE_APK_FILE,
           true,
@@ -62,6 +71,10 @@ export default function App() {
           }
         );
         setInstallResult(result);
+      } else {
+        setInstallResult(
+          `download error ${downloadResult.status} ${downloadResult.statusText}` as const
+        );
       }
     } catch (e) {
       setInstallResult('exception');
