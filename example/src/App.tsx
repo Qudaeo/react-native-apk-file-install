@@ -4,7 +4,7 @@ import {
   checkPermission,
   requestPermission,
   install,
-} from 'react-native-apk-install';
+} from 'react-native-apk-file-install';
 import { Dirs, FileSystem } from 'react-native-file-access';
 import { apkUrl } from './config.example';
 
