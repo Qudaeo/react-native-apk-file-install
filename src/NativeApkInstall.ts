@@ -5,7 +5,7 @@ export interface Spec extends TurboModule {
   install(
     path: string,
     silent: boolean,
-    onStatusReceive: (status: number, message: string) => void
+    listener: (status: number, message: string) => void
   ): Promise<boolean>;
   checkPermission(): Promise<boolean>;
   requestPermission(): Promise<boolean>;

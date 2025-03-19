@@ -3,9 +3,9 @@ import ApkInstall from './NativeApkInstall';
 export async function install(
   path: string,
   silent: boolean,
-  onStatusReceive: (status: number, message: string) => void
+  listener: (status: number, message: string) => void
 ): Promise<boolean> {
-  return await ApkInstall.install(path, silent, onStatusReceive);
+  return await ApkInstall.install(path, silent, listener);
 }
 
 export async function checkPermission(): Promise<boolean> {
