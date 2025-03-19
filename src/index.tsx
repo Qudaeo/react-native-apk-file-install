@@ -15,3 +15,9 @@ export async function checkPermission(): Promise<boolean> {
 export async function requestPermission(): Promise<boolean> {
   return await ApkInstall.requestPermission();
 }
+
+export default {
+  install,
+  checkPermission,
+  requestPermission,
+};
