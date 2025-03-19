@@ -1,10 +1,11 @@
-# react-native-apk-install
+# react-native-apk-file-install
 
 APK-file package installer for React Native
 
 ## Installation
 
 ```sh
+yarn add react-native-apk-install
 npm install react-native-apk-install
 ```
 
@@ -12,22 +13,20 @@ npm install react-native-apk-install
 
 
 ```js
-import { multiply } from 'react-native-apk-install';
+import { checkPermission, requestPermission, install } from 'react-native-apk-file-install';
 
-// ...
+const checkPermissionResult = await checkPermission();
+const requestPermissionResult = await requestPermission();
 
-const result = multiply(3, 7);
+const installResult = await install(
+  UPDATE_APK_FILE, // path to apk file on device (${Dirs.CacheDir}/update.apk)
+  true, // silient
+  (status, message) => {
+    console.log({ status, message });
+  } // status listener
+);
 ```
-
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
 ## License
 
 MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)

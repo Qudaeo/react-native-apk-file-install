@@ -46,8 +46,12 @@
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "android",
+    "apk",
+    "install",
+    "package",
+    "PackageInstaller",
+    "UPDATE_PACKAGES_WITHOUT_USER_ACTION"
   ],
   "repository": {
     "type": "git",
