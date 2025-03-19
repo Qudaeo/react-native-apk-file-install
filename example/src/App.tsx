@@ -87,18 +87,18 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.row}>
         <Button title={'checkPermission'} onPress={apkInstallCheckPermission} />
-        <Text>{`Result: ${checkPermissionResult}`}</Text>
+        <Text style={styles.text}>{`Result: ${checkPermissionResult}`}</Text>
       </View>
       <View style={styles.row}>
         <Button
           title={'requestPermission'}
           onPress={apkInstallRequestPermission}
         />
-        <Text>{`Result: ${requestPermissionResult}`}</Text>
+        <Text style={styles.text}>{`Result: ${requestPermissionResult}`}</Text>
       </View>
       <View style={styles.row}>
         <Button title={'install'} onPress={installApk} />
-        <Text>{`Result: ${installResult}`}</Text>
+        <Text style={styles.text}>{`Result: ${installResult}`}</Text>
       </View>
       {installStatus && <Text>{JSON.stringify(installStatus)}</Text>}
     </View>
@@ -116,5 +116,8 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     gap: 16,
+  },
+  text: {
+    flexShrink: 1,
   },
 });
