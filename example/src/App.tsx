@@ -78,6 +78,7 @@ export default function App() {
         );
       }
     } catch (e) {
+      // @ts-ignore
       setInstallResult(`exception ${e?.message}` as const);
       console.error('install', e);
     }

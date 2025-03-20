@@ -5,8 +5,8 @@ APK-file package installer for React Native
 ## Installation
 
 ```sh
-yarn add react-native-apk-install
-npm install react-native-apk-install
+yarn add react-native-apk-file-install
+npm install react-native-apk-file-install
 ```
 
 ## Usage
