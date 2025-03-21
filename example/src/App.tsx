@@ -15,7 +15,8 @@ type Result =
   | 'exception'
   | `exception ${any}`
   | 'downloading'
-  | 'installing'
+  | 'installing start'
+  | 'installing started'
   | `download error ${number} ${string}`;
 
 const UPDATE_APK_FILE = `${Dirs.CacheDir}/update.apk`;
@@ -63,15 +64,11 @@ export default function App() {
       });
 
       if (downloadResult.ok) {
-        setInstallResult('installing');
-        const result = await install(
-          UPDATE_APK_FILE,
-          true,
-          (status, message) => {
-            setInstallStatus({ status, message });
-          }
-        );
-        setInstallResult(result);
+        setInstallResult('installing start');
+        await install(UPDATE_APK_FILE, true, (status, message) => {
+          setInstallStatus({ status, message });
+        });
+        setInstallResult('installing started');
       } else {
         setInstallResult(
           `download error ${downloadResult.status} ${downloadResult.statusText}` as const

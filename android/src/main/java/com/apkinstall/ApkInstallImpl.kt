@@ -10,28 +10,22 @@ import androidx.core.net.toUri
 import com.facebook.react.bridge.Callback
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.module.annotations.ReactModule
 import java.io.File
 
-@ReactModule(name = ApkInstallModule.NAME)
-class ApkInstallModule(reactContext: ReactApplicationContext) :
-  NativeApkInstallSpec(reactContext) {
+class ApkInstallImpl(reactContext: ReactApplicationContext) {
 
-  override fun getName(): String {
-    return NAME
-  }
+  val reactApplicationContext = reactContext
 
-  override fun install(
+  fun install(
     path: String,
     silent: Boolean,
     listener: Callback,
-    promise: Promise?
   ) {
     onStatusReceive = listener
 
     val apkFile = File(path)
     if (!apkFile.exists()) {
-      promise?.reject("101", "file not exist. $path")
+      onStatusReceive(101, "file not exist. $path")
       return
     }
 
@@ -47,7 +41,7 @@ class ApkInstallModule(reactContext: ReactApplicationContext) :
 
     reactApplicationContext.contentResolver.openInputStream(apkUri).use { apkStream ->
       if (apkStream == null) {
-        promise?.reject("102", "$apkUri: InputStream was null")
+        onStatusReceive(102, "$apkUri: InputStream was null")
         return
       }
 
@@ -68,11 +62,9 @@ class ApkInstallModule(reactContext: ReactApplicationContext) :
     val receiverPendingIntent = PendingIntent.getBroadcast(reactApplicationContext, 0, receiverIntent, flags)
     session.commit(receiverPendingIntent.intentSender)
     session.close()
-
-    promise?.resolve(true)
   }
 
-  override fun checkPermission(promise: Promise?) {
+  fun checkPermission(promise: Promise?) {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
       promise?.resolve(true)
     } else {
@@ -80,7 +72,7 @@ class ApkInstallModule(reactContext: ReactApplicationContext) :
     }
   }
 
-  override fun requestPermission(promise: Promise?) {
+  fun requestPermission(promise: Promise?) {
     val packageURI = Uri.parse("package:" + reactApplicationContext.packageName)
     val packageManager = reactApplicationContext.packageManager
 

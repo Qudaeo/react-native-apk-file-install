@@ -9,7 +9,7 @@ import java.util.HashMap
 
 class ApkInstallPackage : BaseReactPackage() {
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name == ApkInstallModule.NAME) {
+    return if (name == ApkInstallImpl.NAME) {
       ApkInstallModule(reactContext)
     } else {
       null
@@ -19,9 +19,9 @@ class ApkInstallPackage : BaseReactPackage() {
   override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
     return ReactModuleInfoProvider {
       val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      moduleInfos[ApkInstallModule.NAME] = ReactModuleInfo(
-        ApkInstallModule.NAME,
-        ApkInstallModule.NAME,
+      moduleInfos[ApkInstallImpl.NAME] = ReactModuleInfo(
+        ApkInstallImpl.NAME,
+        ApkInstallImpl.NAME,
         false,  // canOverrideExistingModule
         false,  // needsEagerInit
         false,  // isCxxModule

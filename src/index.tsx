@@ -4,8 +4,8 @@ export async function install(
   path: string,
   silent: boolean,
   listener: (status: number, message: string) => void
-): Promise<boolean> {
-  return await ApkInstall.install(path, silent, listener);
+) {
+  await ApkInstall.install(path, silent, listener);
 }
 
 export async function checkPermission(): Promise<boolean> {
