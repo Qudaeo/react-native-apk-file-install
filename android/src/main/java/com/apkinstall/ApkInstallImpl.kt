@@ -14,7 +14,7 @@ import java.io.File
 
 class ApkInstallImpl(reactContext: ReactApplicationContext) {
 
-  val reactApplicationContext = reactContext
+  private val reactApplicationContext = reactContext
 
   fun install(
     path: String,
