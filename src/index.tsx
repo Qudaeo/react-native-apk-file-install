@@ -8,12 +8,12 @@ export async function install(
   await ApkInstall.install(path, silent, listener);
 }
 
-export async function checkPermission(): Promise<boolean> {
+export async function checkPermission() {
   return await ApkInstall.checkPermission();
 }
 
-export async function requestPermission(): Promise<boolean> {
-  return await ApkInstall.requestPermission();
+export async function requestPermission() {
+  await ApkInstall.requestPermission();
 }
 
 export default {

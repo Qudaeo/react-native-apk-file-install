@@ -8,7 +8,7 @@ export interface Spec extends TurboModule {
     listener: (status: number, message: string) => void
   ): void;
   checkPermission(): Promise<boolean>;
-  requestPermission(): Promise<boolean>;
+  requestPermission(): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('ApkInstall');

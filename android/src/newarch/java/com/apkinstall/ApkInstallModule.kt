@@ -35,7 +35,7 @@ class ApkInstallModule(reactContext: ReactApplicationContext) :
     return implementation.checkPermission(promise)
   }
 
-  override fun requestPermission(promise: Promise?) {
-    return implementation.requestPermission(promise)
+  override fun requestPermission() {
+    implementation.requestPermission()
   }
 }

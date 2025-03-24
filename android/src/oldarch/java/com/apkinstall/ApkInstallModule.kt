@@ -31,7 +31,7 @@ class ApkInstallModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun requestPermission(promise: Promise?) {
-    return implementation.requestPermission(promise)
+  fun requestPermission() {
+    implementation.requestPermission()
   }
 }

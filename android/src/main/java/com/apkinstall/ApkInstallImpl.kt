@@ -72,7 +72,7 @@ class ApkInstallImpl(reactContext: ReactApplicationContext) {
     }
   }
 
-  fun requestPermission(promise: Promise?) {
+  fun requestPermission() {
     val packageURI = Uri.parse("package:" + reactApplicationContext.packageName)
     val packageManager = reactApplicationContext.packageManager
 
@@ -83,8 +83,6 @@ class ApkInstallImpl(reactContext: ReactApplicationContext) {
         reactApplicationContext.startActivity(intent)
       }
     }
-
-    promise?.resolve(true)
   }
 
   companion object {

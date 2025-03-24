@@ -11,6 +11,7 @@ import { apkUrl } from './config.example';
 type Result =
   | boolean
   | 'in progress'
+  | 'finish'
   | 'unknown'
   | 'exception'
   | `exception ${any}`
@@ -46,8 +47,8 @@ export default function App() {
   const apkInstallRequestPermission = async () => {
     try {
       setRequestPermissionResult('in progress');
-      const result = await requestPermission();
-      setRequestPermissionResult(result);
+      await requestPermission();
+      setRequestPermissionResult('finish');
     } catch (e) {
       setRequestPermissionResult('exception');
       console.error('requestPermission', e);
