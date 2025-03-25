@@ -4,6 +4,7 @@ import {
   checkPermission,
   requestPermission,
   install,
+  checkVerifyAppsEnabled,
 } from 'react-native-apk-file-install';
 import { Dirs, FileSystem } from 'react-native-file-access';
 import { apkUrl } from './config.example';
@@ -32,6 +33,7 @@ export default function App() {
     status: number;
     message: string;
   } | null>(null);
+  const [verifyAppsEnabled, setVerifyAppsEnabled] = useState<Result>('unknown');
 
   const apkInstallCheckPermission = async () => {
     try {
@@ -82,6 +84,17 @@ export default function App() {
     }
   };
 
+  const checkIsVerifyAppsEnabled = async () => {
+    try {
+      const isEnabled = await checkVerifyAppsEnabled();
+      setVerifyAppsEnabled(isEnabled);
+    } catch (e) {
+      // @ts-ignore
+      setVerifyAppsEnabled(`exception ${e?.message}` as const);
+      console.error('install', e);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -100,6 +113,13 @@ export default function App() {
         <Text style={styles.text}>{`Result: ${installResult}`}</Text>
       </View>
       {installStatus && <Text>{JSON.stringify(installStatus)}</Text>}
+      <View style={styles.row}>
+        <Button
+          title={'checkVerifyAppsEnabled'}
+          onPress={checkIsVerifyAppsEnabled}
+        />
+        <Text style={styles.text}>{`Result: ${verifyAppsEnabled}`}</Text>
+      </View>
     </View>
   );
 }

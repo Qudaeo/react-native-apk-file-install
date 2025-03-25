@@ -10,6 +10,7 @@ import androidx.core.net.toUri
 import com.facebook.react.bridge.Callback
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
+import com.google.android.gms.safetynet.SafetyNet
 import java.io.File
 
 class ApkInstallImpl(reactContext: ReactApplicationContext) {
@@ -83,6 +84,22 @@ class ApkInstallImpl(reactContext: ReactApplicationContext) {
         reactApplicationContext.startActivity(intent)
       }
     }
+  }
+
+  fun checkVerifyAppsEnabled(promise: Promise?) {
+    SafetyNet.getClient(reactApplicationContext)
+      .isVerifyAppsEnabled
+      .addOnCompleteListener { task ->
+        if (task.isSuccessful) {
+          if (task.result.isVerifyAppsEnabled) run {
+            promise?.resolve(task.result.isVerifyAppsEnabled)
+          } else {
+            promise?.resolve(false)
+          }
+        } else {
+          promise?.reject("103", "A general error occurred.")
+        }
+      }
   }
 
   companion object {

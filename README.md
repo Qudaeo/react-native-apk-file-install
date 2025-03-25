@@ -13,7 +13,7 @@ npm install react-native-apk-file-install
 
 
 ```js
-import { checkPermission, requestPermission, install } from 'react-native-apk-file-install';
+import { checkPermission, requestPermission, install, checkVerifyAppsEnabled } from 'react-native-apk-file-install';
 
 const checkPermissionResult = await checkPermission();
 
@@ -26,6 +26,8 @@ const installResult = await install(
     console.log({ status, message });
   } // status listener
 );
+
+const isVerifyAppsEnabled = await await checkVerifyAppsEnabled();
 ```
 
 ## License

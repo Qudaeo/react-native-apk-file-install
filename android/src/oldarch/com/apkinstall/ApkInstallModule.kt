@@ -1,11 +1,10 @@
 package com.apkinstall
 
 import com.facebook.react.bridge.Callback
+import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
-
-import com.facebook.react.bridge.Promise
 
 class ApkInstallModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
@@ -27,11 +26,16 @@ class ApkInstallModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun checkPermission(promise: Promise?) {
-    return implementation.checkPermission(promise)
+    implementation.checkPermission(promise)
   }
 
   @ReactMethod
   fun requestPermission() {
     implementation.requestPermission()
+  }
+
+  @ReactMethod
+  fun checkVerifyAppsEnabled(promise: Promise?) {
+    implementation.checkVerifyAppsEnabled(promise)
   }
 }

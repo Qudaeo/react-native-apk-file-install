@@ -9,6 +9,7 @@ export interface Spec extends TurboModule {
   ): void;
   checkPermission(): Promise<boolean>;
   requestPermission(): void;
+  checkVerifyAppsEnabled(): Promise<boolean>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('ApkInstall');

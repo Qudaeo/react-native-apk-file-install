@@ -1,23 +1,28 @@
 import ApkInstall from './NativeApkInstall';
 
-export async function install(
+export function install(
   path: string,
   silent: boolean,
   listener: (status: number, message: string) => void
 ) {
-  await ApkInstall.install(path, silent, listener);
+  return ApkInstall.install(path, silent, listener);
 }
 
-export async function checkPermission() {
-  return await ApkInstall.checkPermission();
+export function checkPermission() {
+  return ApkInstall.checkPermission();
 }
 
-export async function requestPermission() {
-  await ApkInstall.requestPermission();
+export function requestPermission() {
+  return ApkInstall.requestPermission();
+}
+
+export function checkVerifyAppsEnabled() {
+  return ApkInstall.checkVerifyAppsEnabled();
 }
 
 export default {
   install,
   checkPermission,
   requestPermission,
+  checkVerifyAppsEnabled,
 };
