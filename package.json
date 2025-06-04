@@ -180,7 +180,8 @@
       [
         "typescript",
         {
-          "project": "tsconfig.build.json",
+          "project": "tsconfig.json",
+          "tsc": "./node_modules/.bin/tsc",
           "esm": true
         }
       ]
@@ -198,10 +199,5 @@
       "javaPackageName": "com.apkinstall"
     },
     "includesGeneratedCode": true
-  },
-  "create-react-native-library": {
-    "type": "turbo-module",
-    "languages": "kotlin-objc",
-    "version": "0.48.3"
   }
 }
