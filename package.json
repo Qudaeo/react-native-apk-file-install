@@ -2,7 +2,7 @@
   "name": "react-native-apk-file-install",
   "version": "1.4.0",
   "description": "APK-file package installer for React Native",
-  "source": "./src/index.tsx",
+  "source": "./src/index.ts",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
   "exports": {
@@ -84,6 +84,7 @@
     "prettier": "^3.0.3",
     "react": "19.0.0",
     "react-native": "0.78.1",
+    "react-native-builder-bob": "0.40.12",
     "release-it": "^17.10.0",
     "typescript": "^5.2.2"
   },
@@ -179,8 +180,7 @@
         "typescript",
         {
           "project": "tsconfig.json",
-          "tsc": "./node_modules/.bin/tsc",
-          "esm": true
+          "tsc": "./node_modules/.bin/tsc"
         }
       ]
     ]
