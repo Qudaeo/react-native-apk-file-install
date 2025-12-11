@@ -2,7 +2,7 @@
   "name": "react-native-apk-file-install",
   "version": "1.4.0",
   "description": "APK-file package installer for React Native",
-  "source": "./src/index.tsx",
+  "source": "./src/index.ts",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
   "exports": {
@@ -76,7 +76,7 @@
     "@types/jest": "^29.5.5",
     "@types/react": "^18.2.44",
     "commitlint": "^17.0.2",
-    "del-cli": "^5.1.0",
+    "del-cli": "6.0.0",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
@@ -84,10 +84,9 @@
     "prettier": "^3.0.3",
     "react": "19.0.0",
     "react-native": "0.78.1",
-    "react-native-builder-bob": "^0.37.0",
-    "release-it": "^17.10.0",
-    "turbo": "^1.10.7",
-    "typescript": "^5.2.2"
+    "react-native-builder-bob": "0.40.13",
+    "release-it": "19.0.4",
+    "typescript": "5.9.2"
   },
   "resolutions": {
     "@types/react": "^18.2.44"
@@ -99,7 +98,7 @@
   "workspaces": [
     "example"
   ],
-  "packageManager": "yarn@4.7.0",
+  "packageManager": "yarn@4.9.2",
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
@@ -180,8 +179,8 @@
       [
         "typescript",
         {
-          "project": "tsconfig.build.json",
-          "esm": true
+          "project": "tsconfig.json",
+          "tsc": "./node_modules/.bin/tsc"
         }
       ]
     ]
@@ -198,10 +197,5 @@
       "javaPackageName": "com.apkinstall"
     },
     "includesGeneratedCode": true
-  },
-  "create-react-native-library": {
-    "type": "turbo-module",
-    "languages": "kotlin-objc",
-    "version": "0.48.3"
   }
 }
