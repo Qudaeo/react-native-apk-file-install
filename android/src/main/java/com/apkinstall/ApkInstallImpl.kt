@@ -105,5 +105,6 @@ class ApkInstallImpl(reactContext: ReactApplicationContext) {
   companion object {
     const val NAME = "ApkInstall"
     lateinit var onStatusReceive: Callback
+    fun isInitialized() = ::onStatusReceive.isInitialized
   }
 }

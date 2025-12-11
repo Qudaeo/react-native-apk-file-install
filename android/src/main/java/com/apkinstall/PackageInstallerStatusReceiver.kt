@@ -23,13 +23,17 @@ class PackageInstallerStatusReceiver : BroadcastReceiver() {
       }
 
       PackageInstaller.STATUS_SUCCESS -> {
-        ApkInstallImpl.onStatusReceive(status, "OK")
+        if (ApkInstallImpl.isInitialized()) {
+          ApkInstallImpl.onStatusReceive(status, "OK")
+        }
       }
 
       else -> {
         val message = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
         println("PackageInstallerStatusReceiver: status=$status, message=$message")
-        ApkInstallImpl.onStatusReceive(status, message)
+        if (ApkInstallImpl.isInitialized()) {
+          ApkInstallImpl.onStatusReceive(status, message)
+        }
       }
     }
   }
