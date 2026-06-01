@@ -20,9 +20,14 @@ export function checkVerifyAppsEnabled() {
   return ApkInstall.checkVerifyAppsEnabled();
 }
 
+export function checkDrawOverlaysPermission() {
+  return ApkInstall.checkDrawOverlaysPermission();
+}
+
 export default {
   install,
   checkPermission,
   requestPermission,
   checkVerifyAppsEnabled,
+  checkDrawOverlaysPermission,
 };

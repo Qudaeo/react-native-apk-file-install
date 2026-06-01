@@ -5,6 +5,7 @@ import {
   requestPermission,
   install,
   checkVerifyAppsEnabled,
+  checkDrawOverlaysPermission,
 } from '../../src';
 import { Dirs, FileSystem } from 'react-native-file-access';
 import { apkUrl } from './config.example';
@@ -34,6 +35,8 @@ export default function App() {
     message: string;
   } | null>(null);
   const [verifyAppsEnabled, setVerifyAppsEnabled] = useState<Result>('unknown');
+  const [drawOverlaysPermission, setDrawOverlaysPermission] =
+    useState<Result>('unknown');
 
   const apkInstallCheckPermission = async () => {
     try {
@@ -84,6 +87,15 @@ export default function App() {
     }
   };
 
+  const checkDrawOverlays = async () => {
+    try {
+      const drawOverlays = await checkDrawOverlaysPermission();
+      setDrawOverlaysPermission(drawOverlays);
+    } catch (e) {
+      console.error('checkDrawOverlaysPermission', e);
+    }
+  };
+
   const checkIsVerifyAppsEnabled = async () => {
     try {
       const isEnabled = await checkVerifyAppsEnabled();
@@ -119,6 +131,10 @@ export default function App() {
           onPress={checkIsVerifyAppsEnabled}
         />
         <Text style={styles.text}>{`Result: ${verifyAppsEnabled}`}</Text>
+      </View>
+      <View style={styles.row}>
+        <Button title={'checkDrawOverlays'} onPress={checkDrawOverlays} />
+        <Text style={styles.text}>{`Result: ${drawOverlaysPermission}`}</Text>
       </View>
     </View>
   );

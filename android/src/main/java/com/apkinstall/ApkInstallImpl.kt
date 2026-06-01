@@ -102,6 +102,14 @@ class ApkInstallImpl(reactContext: ReactApplicationContext) {
       }
   }
 
+  fun checkDrawOverlaysPermission(promise: Promise?) {
+    try {
+      promise?.resolve(Settings.canDrawOverlays(reactApplicationContext))
+    } catch (e: Error) {
+      promise?.reject(e)
+    }
+  }
+
   companion object {
     const val NAME = "ApkInstall"
     lateinit var onStatusReceive: Callback

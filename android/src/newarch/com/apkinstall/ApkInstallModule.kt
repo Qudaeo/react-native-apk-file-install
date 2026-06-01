@@ -34,4 +34,8 @@ class ApkInstallModule(reactContext: ReactApplicationContext) :
   override fun checkVerifyAppsEnabled(promise: Promise?) {
     implementation.checkVerifyAppsEnabled(promise)
   }
+
+  override fun checkDrawOverlaysPermission(promise: Promise?) {
+    implementation.checkDrawOverlaysPermission(promise)
+  }
 }
